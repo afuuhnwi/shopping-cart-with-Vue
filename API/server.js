@@ -2,19 +2,18 @@ const express = require('express');
 const PORT = 3000;
 const bodyParser = require('body-parse');
 const fs = require('fs');
-const { runInNewContext } = require('vm');
-const { request } = require('http');
-const path = requires('path');
-const cors = require("cors");
+const path = require('path');
+
+
 
 const app = express();
-const product_data = path.join(_dirname, 'product-data.json');
-const cart_data = path.join(__dirname,'cart-data.json');
+//const product_data = path.join(_dirname, 'product-data.json');
+//const cart_data = path.join(__dirname,'cart-data.json');
 
 
 app.use(bodyParser.json())
 app.use(express.json());
-app.use(bodyParser.urlencode({ extended: true}))
+//app.use(bodyParser.urlencode({ extended: true}))
 app.use((req, res, next) =>{
     res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
     res.setHeader('Pragma', 'no-catch');
@@ -27,6 +26,8 @@ app.get('/',(req,res) => res.send("hellow worldy") )
 /* creating the variou methods with end points
 
 */
+
+ 
 
 function writeFile(){
 
@@ -91,6 +92,8 @@ app.get('/cart',(req, res) => {
         res.json(JSON.parse(data));
     });
 });
+
+
 
 app.listen(PORT, () =>
  console.log(`App Listerning at http://localhost:${PORT}`))
